@@ -171,7 +171,7 @@ export default function Home() {
         </section>
 
         <footer className="text-center text-gray-500 py-20 mt-32">
-          SOL3 © 2026 • MIT Pune Beta
+          SOL3 © 2026 • Early Access
         </footer>
       </main>
 
