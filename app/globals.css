@@ -24,3 +24,55 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Global box sizing and responsive defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Fluid, clamped base font-size for better readability across devices */
+:root {
+  --base-font-size: clamp(14px, 1.4vw, 18px);
+}
+
+html {
+  font-size: var(--base-font-size);
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Make media and images responsive to prevent overflow/overlap */
+img, picture, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent long words/strings from overflowing */
+p, a, button, input, h1, h2, h3, h4 {
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Basic container utility for content centering */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Limit extreme heading sizes so they don't overlap on small screens */
+h1 {
+  font-size: clamp(1.6rem, 6vw, 4.5rem);
+  line-height: 1.02;
+}
+
+/* Modal/content helpers: ensure modals fit smaller viewports */
+.modal-full-mobile {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 0.5rem;
+}
