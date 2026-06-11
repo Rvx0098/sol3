@@ -666,6 +666,20 @@ function WaitlistModal({ open, onClose }: { open: boolean; onClose: () => void }
       else setError(insertError.message || "Something went wrong. Try again.");
       return;
     }
+
+    if (!insertError) {
+      await fetch("/api/send-welcome", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: form.email.trim().toLowerCase(),
+          name: form.name.trim(),
+        }),
+      });
+    }
+
     setSuccess(true);
   }
 
