@@ -15,6 +15,7 @@ export default function Home() {
     college: "",
     collector_interest: "",
   });
+  const [selectedAction, setSelectedAction] = useState("Trade");
 
   async function handleSubmit() {
     if (
@@ -110,26 +111,64 @@ export default function Home() {
         </section>
 
         <section className="mt-32 px-6">
-          <h2 className="text-center text-3xl font-bold mb-12">
-            Categories
-          </h2>
+          <h2 className="text-center text-3xl font-bold mb-6">Categories</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              "Sneakers",
-              "Pokemon Cards",
-              "Gaming",
-              "Watches",
-              "Streetwear",
-              "Manga",
-              "Keyboards",
-              "Collectibles",
-            ].map((item) => (
-              <div
-                key={item}
-                className="border border-gray-800 rounded-2xl p-6 text-center hover:border-white transition"
+          <div className="max-w-5xl mx-auto mb-6 flex justify-center gap-4">
+            {["Trade", "Buy", "Sell", "Bid"].map((action) => (
+              <button
+                key={action}
+                onClick={() => setSelectedAction(action)}
+                className={`px-6 py-2 rounded-full font-semibold transition-all border ${
+                  selectedAction === action
+                    ? "bg-white text-black border-white shadow-lg scale-105"
+                    : "border-zinc-700 text-gray-200 bg-transparent hover:bg-zinc-900"
+                }`}
               >
-                {item}
+                {action}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Sneakers",
+                subs: ["Nikes", "Jordans", "Asics", "Vans", "Adidas"],
+              },
+              {
+                title: "Clothing (Re-thrift)",
+                subs: ["Vintage Tees", "Denim", "Jackets", "Graphic Tees"],
+              },
+              { title: "Jerseys", subs: ["NBA", "NFL", "Soccer"] },
+              {
+                title: "Gaming Consoles",
+                subs: ["PS4", "PS5", "Xbox One", "Xbox Series X"],
+              },
+              { title: "Handhelds", subs: ["Nintendo Switch", "Game Boy", "PSP"] },
+              { title: "Manga", subs: ["One Piece", "Naruto", "Demon Slayer"] },
+              { title: "TCG", subs: ["Pokémon Cards", "Magic: The Gathering", "NBA Cards"] },
+              { title: "Beyblades", subs: ["Burst", "Metal Fight"] },
+              { title: "Nerfs", subs: ["Blasters", "Accessories"] },
+              { title: "Old Tech", subs: ["iPods", "Retro Laptops", "Cameras"] },
+              { title: "Other Collectibles", subs: ["Pins", "Figures", "Posters"] },
+            ].map((cat) => (
+              <div
+                key={cat.title}
+                className="card-3d bg-zinc-900 border border-zinc-800 rounded-3xl p-6 text-center transition"
+              >
+                <div className="card-inner rounded-2xl p-6 bg-gradient-to-b from-zinc-900 to-zinc-900/90">
+                  <div className="text-lg font-semibold mb-3">{cat.title}</div>
+
+                  <ul className="text-sm text-gray-300 mb-4 space-y-1">
+                    {cat.subs.map((s) => (
+                      <li key={s} className="truncate">
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+
+                  
+                </div>
               </div>
             ))}
           </div>
@@ -171,7 +210,8 @@ export default function Home() {
         </section>
 
         <footer className="text-center text-gray-500 py-20 mt-32">
-          SOL3 © 2026 • Early Access
+          <div>SOL3 © 2026 • Early Access</div>
+          <div className="text-xs mt-4">Contact: <a href="mailto:contact@sol3.site" className="text-gray-200 underline">contact@sol3.site</a></div>
         </footer>
       </main>
 
