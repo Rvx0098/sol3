@@ -3,6 +3,8 @@
 
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
+import soll3Logo from "../media/logo/soll3_logo.png";
 import {
   AnimatePresence,
   motion,
@@ -137,11 +139,10 @@ function Nav({ onCTA }: { onCTA: () => void }) {
               : "border-transparent bg-transparent px-2 py-2"
           }`}
         >
-          <a href="#top" className="flex items-center gap-2">
-            <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-[10px] font-black text-black">
-              S
-              <span className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-            </span>
+          <a href="#top" className="flex items-center gap-3">
+            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/10 bg-black/70 p-2">
+              <Image src={soll3Logo} alt="Sol3 logo" width={32} height={32} className="object-contain" />
+            </div>
             <span className="text-[15px] font-bold tracking-[0.18em] text-white">SOL3</span>
           </a>
 
